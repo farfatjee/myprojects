@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
 
 
-    /* Password must not be exposed ....*/
+    /* Password must not be exposed ......*/
     @GetMapping("/user")
     public List<User> getAllUsers(){
 
