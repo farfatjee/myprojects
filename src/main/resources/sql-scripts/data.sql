@@ -2,7 +2,7 @@ INSERT INTO app_role (id, role_name, description) VALUES (1, 'STANDARD_USER', 'S
 INSERT INTO app_role (id, role_name, description) VALUES (2, 'ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
 
 -- USER
--- non-encrypted password: jwtpass
+-- non-encrypted password: jwtpass--
 --INSERT INTO app_user (id, first_name, last_name, password, username) VALUES (1, 'John', 'Doe', '821f498d827d4edad2ed0960408a98edceb661d9f34287ceda2962417881231a', 'john.doe');
 INSERT INTO app_user (id, first_name, last_name, password, username) VALUES (1, 'John', 'Doe', '$2a$10$zW72HAM3hW.d3/Ri5ApeDO/.qFKrekeVddCW4pJr3HlpJ0jqkzyAO', 'john.doe');
 INSERT INTO app_user (id, first_name, last_name, password, username) VALUES (2, 'Admin', 'Admin', '$2a$10$Hk9kH.pv4B4yOQnuR7Drk.Exa4mJvoZSa3bWjmWR7UWkOAsY7JJyC', 'admin.admin');
