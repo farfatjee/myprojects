@@ -1,7 +1,8 @@
-package com.shakeer.company.service;
+package com.shakeer.company.service.impl;
 
 import com.shakeer.company.entity.User;
 import com.shakeer.company.repository.UserRepository;
+import com.shakeer.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -26,9 +27,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getAllUsers() {
-        //return userRepository.findAll();
+        return userRepository.findAll();
         //return userRepository.findAllByOrderByUserNameAsc();
-        return userRepository.findAllByOrderByUserIdAsc();
+        //return userRepository.findAllByOrderByUserIdAsc();
+
 
     }
 
@@ -55,9 +57,9 @@ public class UserServiceImpl implements UserService{
         if(Objects.nonNull(user.getLastName()) && !"".equals(user.getLastName())){
             userDB.setLastName(user.getLastName());
         }
-        if(Objects.nonNull(user.getEmail()) && !"".equals(user.getEmail())){
+     /*   if(Objects.nonNull(user.getEmail()) && !"".equals(user.getEmail())){
             userDB.setEmail(user.getEmail());
-        }
+        }   */
         return userRepository.save(userDB);
 
     }
@@ -66,7 +68,7 @@ public class UserServiceImpl implements UserService{
           List<User> userList = getAllUsers();
             List<User> sortedUserList = null;
             if(Objects.nonNull(userList)) {
-                sortedUserList = userList.stream().sorted(Comparator.comparingDouble(User::getSalary)).collect(Collectors.toList());
+           //     sortedUserList = userList.stream().sorted(Comparator.comparingDouble(User::getSalary)).collect(Collectors.toList());
             }
         return sortedUserList;
         }
