@@ -62,7 +62,7 @@ public class UserController {
         String token = getJWTToken(username);
         User user = new User();
         user.setUsername(username);
-        user.setToken(token);
+        //user.setToken(token);
         return user;
 
     }

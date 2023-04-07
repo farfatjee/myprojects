@@ -12,7 +12,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
@@ -20,8 +20,11 @@ public class User {
     private String firstName;
     @Column(name="last_name")
     private String lastName;
-    @Transient
-    private String token;
+    @Column(name="email")
+    private String email;
+
+  //  @Transient
+    //private String token;
   //  private String email;
   //  private Double salary;
 

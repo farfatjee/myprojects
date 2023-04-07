@@ -1,12 +1,16 @@
 package com.shakeer.company.service.impl;
 
+import com.shakeer.company.entity.Role;
 import com.shakeer.company.entity.User;
 import com.shakeer.company.repository.UserRepository;
 import com.shakeer.company.service.UserService;
+import com.shakeer.company.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
+    public static final Long STANDARD_USER = 1l;
+    public static final Long ADMIN_USER = 2l;
     @Autowired
     private UserRepository userRepository;
 
@@ -22,6 +28,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
+        Role role = new Role();
+        role.setId(STANDARD_USER);
+        List list = new ArrayList();
+        list.add(role);
+        user.setRoles(list);
+        String hashedPassword = Util.passwordEncoder(user.getPassword());
+        System.out.println(" The user password :::" + hashedPassword);
+        user.setPassword(hashedPassword);
         return userRepository.save(user);
     }
 
